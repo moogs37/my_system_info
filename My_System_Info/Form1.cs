@@ -21,7 +21,8 @@ namespace My_System_Info
             InitializeComponent();
             this.Text = "My System Info v 0.1";
             SerialNumber.Text = "Serial Number: " + GetHDDSerialNumber("C");
-            HDDSize.Text = "HDD Size: " + getHDDSize("C");
+            HDDSize.Text = "HDD Size: " + getHDDSize("C") + " GiB";
+            freeSpace.Text = "HDD Free Space: " + getHDDFreeSpace("C") + " GiB";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,9 +42,27 @@ namespace My_System_Info
         }
         public string getHDDSize(string drive)
         {
+            double driveSize;
+            double bytesToGig = 1073741824;
+            double gigHDDSize;
             ManagementObject disk = new ManagementObject("Win32_LogicalDisk.DeviceID=\"" + drive + ":\"");
             disk.Get();
-            return Convert.ToString(disk["Size"]);
+            driveSize = Convert.ToDouble(disk["Size"]);         //Converting to gig and to 2 decimals...
+            gigHDDSize = driveSize / bytesToGig;
+            gigHDDSize = System.Math.Round(gigHDDSize, 2);
+            return Convert.ToString(gigHDDSize);
+        }
+
+        public double getHDDFreeSpace(string drive)
+        {
+            double freeSpace, gigFreeSpace;
+            double bytesToGig = 1073741824;
+            ManagementObject disk = new ManagementObject("Win32_LogicalDisk.DeviceID=\"" + drive + ":\"");
+            disk.Get();
+            freeSpace = Convert.ToDouble(disk["FreeSpace"]);
+            gigFreeSpace = freeSpace / bytesToGig;
+            gigFreeSpace = System.Math.Round(gigFreeSpace, 2);
+            return Convert.ToDouble(gigFreeSpace);
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             this.SerialNumber = new System.Windows.Forms.Label();
             this.HDDSize = new System.Windows.Forms.Label();
+            this.freeSpace = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // SerialNumber
@@ -50,11 +51,21 @@
             this.HDDSize.TabIndex = 1;
             this.HDDSize.Text = "HDDSize";
             // 
+            // freeSpace
+            // 
+            this.freeSpace.AutoSize = true;
+            this.freeSpace.Location = new System.Drawing.Point(18, 109);
+            this.freeSpace.Name = "freeSpace";
+            this.freeSpace.Size = new System.Drawing.Size(56, 13);
+            this.freeSpace.TabIndex = 2;
+            this.freeSpace.Text = "freeSpace";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.freeSpace);
             this.Controls.Add(this.HDDSize);
             this.Controls.Add(this.SerialNumber);
             this.Name = "Form1";
@@ -69,6 +80,7 @@
 
         private System.Windows.Forms.Label SerialNumber;
         private System.Windows.Forms.Label HDDSize;
+        private System.Windows.Forms.Label freeSpace;
     }
 }
 
