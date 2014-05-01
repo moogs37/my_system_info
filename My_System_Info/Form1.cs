@@ -23,6 +23,7 @@ namespace My_System_Info
             SerialNumber.Text = "Serial Number: " + GetHDDSerialNumber("C");
             HDDSize.Text = "HDD Size: " + getHDDSize("C") + " GiB";
             freeSpace.Text = "HDD Free Space: " + getHDDFreeSpace("C") + " GiB";
+            hostName.Text = "Host Name: " + System.Environment.MachineName;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -63,6 +64,11 @@ namespace My_System_Info
             gigFreeSpace = freeSpace / bytesToGig;
             gigFreeSpace = System.Math.Round(gigFreeSpace, 2);
             return Convert.ToDouble(gigFreeSpace);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
